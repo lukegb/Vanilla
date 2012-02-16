@@ -31,6 +31,7 @@ import org.spout.api.geo.World;
 import org.spout.api.geo.discrete.Point;
 import org.spout.api.inventory.Inventory;
 import org.spout.api.inventory.ItemStack;
+import org.spout.api.material.BlockMaterial;
 import org.spout.api.material.ItemMaterial;
 import org.spout.api.material.Material;
 import org.spout.api.material.block.BlockFace;
@@ -107,7 +108,7 @@ public final class BlockPlacementMessageHandler extends MessageHandler<BlockPlac
 				}
 			}*/
 			Material placedMaterial = holding.getMaterial();
-			if (placedMaterial instanceof ItemMaterial) {
+			if (placedMaterial instanceof ItemMaterial && !(placedMaterial instanceof BlockMaterial)) {
 				((ItemMaterial)placedMaterial).onInteract(player.getEntity(), pos, PlayerInteractEvent.Action.RIGHT_CLICK);
 				return;
 			}
